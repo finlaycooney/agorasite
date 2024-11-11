@@ -1,0 +1,90 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #000;
+    color: #fff;
+    font-family: 'Courier New', monospace;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header styles */
+header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+h1 {
+    font-size: 3rem;
+    letter-spacing: 0.5rem;
+}
+
+.subtitle {
+    color: #888;
+    margin-top: 0.5rem;
+}
+
+/* Main content styles */
+.definition {
+    max-width: 600px;
+    margin: 0 auto 4rem;
+}
+
+.definition ol {
+    margin-left: 2rem;
+    margin-top: 1rem;
+}
+
+.ascii-art {
+    white-space: pre;
+    font-size: 12px;
+    text-align: center;
+    margin: 2rem 0;
+}
+
+/* Footer styles */
+footer {
+    margin-top: auto;
+    text-align: center;
+}
+
+.social-links a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 1rem;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #888;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .ascii-art {
+        font-size: 8px;
+        overflow-x: auto;
+    }
+}
