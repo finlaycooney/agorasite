@@ -5,10 +5,18 @@
     box-sizing: border-box;
 }
 
-body {
+/* body {
     background: #000;
     color: #fff;
     font-family: 'Courier New', monospace;
+    line-height: 1.6;
+    min-height: 100vh;
+} */
+
+
+body {
+    background: #fff;
+    font-family: 'Times New Roman', Times, serif;
     line-height: 1.6;
     min-height: 100vh;
 }
@@ -63,14 +71,16 @@ footer {
 }
 
 .social-links a {
-    color: #fff;
+    color: #000;
+    -webkit-text-stroke: 0.5px #FFD700;
+    text-stroke: 0.5px #FFD700;
     text-decoration: none;
     margin: 0 1rem;
     transition: color 0.3s ease;
 }
 
 .social-links a:hover {
-    color: #888;
+    color: #FFD700;
 }
 
 /* Responsive design */
@@ -87,4 +97,34 @@ footer {
         font-size: 8px;
         overflow-x: auto;
     }
+}
+
+/* Text with gold stroke effect */
+h1, h2, h3, p, li {
+    color: #000;
+    text-shadow: 
+        0 0 1px #000,      /* Black glow */
+        0 0 2px #fff,      /* White glow */
+        0 0 3px #fff;
+}
+
+h1 {
+    text-shadow: 
+        0 0 2px #000,
+        0 0 4px #fff,
+        0 0 6px #fff;
+}
+
+/* For links and other interactive elements */
+.social-links a {
+    color: #000;
+    -webkit-text-stroke: 0.5px #FFD700;
+    text-stroke: 0.5px #FFD700;
+    text-decoration: none;
+    margin: 0 1rem;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #FFD700;  /* Full gold on hover */
 }
