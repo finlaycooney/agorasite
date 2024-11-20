@@ -72,15 +72,15 @@ footer {
 
 .social-links a {
     color: #000;
-    -webkit-text-stroke: 0.5px #FFD700;
-    text-stroke: 0.5px #FFD700;
+    -webkit-text-stroke: 0.5px #000;
+    text-stroke: 0.5px #000;
     text-decoration: none;
     margin: 0 1rem;
     transition: color 0.3s ease;
 }
 
 .social-links a:hover {
-    color: #FFD700;
+    color: #000;
 }
 
 /* Responsive design */
@@ -118,13 +118,13 @@ h1 {
 /* For links and other interactive elements */
 .social-links a {
     color: #000;
-    -webkit-text-stroke: 0.5px #FFD700;
-    text-stroke: 0.5px #FFD700;
+    -webkit-text-stroke: 0.5px #000;
+    text-stroke: 0.5px #000;
     text-decoration: none;
     margin: 0 1rem;
     transition: color 0.3s ease;
 }
 
 .social-links a:hover {
-    color: #FFD700;  /* Full gold on hover */
+    color: #000;  /* Full gold on hover */
 }
