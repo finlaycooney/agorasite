@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Agora4 - About Us</title>
+    <style>
+        /* Modern base with web3/tech retro accents */
+        :root {
+            --primary: #00ffff;
+            --secondary: #ff00ff;
+            --accent: #ffff00;
+            --web3-green: #00ff80;
+            --web3-purple: #9000ff;
+            --dark: #070721;
+            --darker: #050518;
+            --light: #ffffff;
+        }
+
+        body {
+            background-color: var(--darker);
+            color: var(--light);
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: rgba(7, 7, 33, 0.8);
+            padding: 30px;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+            border: 1px solid rgba(0, 255, 128, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(0, 255, 128, 0.3);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            background: linear-gradient(90deg, var(--web3-green), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 5px rgba(0, 255, 128, 0.5);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo::before {
+            content: '◊';
+            font-size: 32px;
+            margin-right: 10px;
+            -webkit-text-fill-color: var(--web3-green);
+        }
+
+        /* Modern navigation */
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--light);
+            font-weight: 500;
+            padding: 8px 15px;
+            transition: all 0.3s;
+            position: relative;
+            z-index: 1;
+        }
+
+        nav a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background: linear-gradient(to top, var(--web3-green), transparent);
+            z-index: -1;
+            transition: height 0.3s;
+        }
+
+        nav a:hover::before {
+            height: 100%;
+        }
+
+        /* Hero section with wavy nets */
+        .hero {
+            position: relative;
+            height: 400px;
+            margin: 40px 0;
+            overflow: hidden;
+            background-color: var(--dark);
+            border: 1px solid rgba(0, 255, 128, 0.3);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero-content {
+            z-index: 2;
+            padding: 20px;
+            max-width: 700px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px var(--web3-green);
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .btn {
+            background: linear-gradient(90deg, var(--web3-green), var(--primary));
+            color: var(--dark);
+            font-weight: 600;
+            padding: 12px 28px;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            box-shadow: 0 0 15px rgba(0, 255, 128, 0.8);
+            transform: translateY(-3px);
+        }
+
+        /* Wavy Net animations - web3 themed */
+        .net-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        .net {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: linear-gradient(90deg,
+                    rgba(144, 0, 255, 0) 0%,
+                    rgba(144, 0, 255, 0.2) 49%,
+                    rgba(144, 0, 255, 0) 100%);
+            opacity: 0.7;
+            mix-blend-mode: screen;
+        }
+
+        .net-1 {
+            background-image: repeating-linear-gradient(0deg,
+                    transparent,
+                    transparent 29px,
+                    rgba(0, 255, 128, 0.5) 30px,
+                    rgba(0, 255, 128, 0.5) 31px);
+            animation: wave 15s infinite ease-in-out;
+        }
+
+        .net-2 {
+            background-image: repeating-linear-gradient(90deg,
+                    transparent,
+                    transparent 29px,
+                    rgba(144, 0, 255, 0.5) 30px,
+                    rgba(144, 0, 255, 0.5) 31px);
+            animation: wave 18s infinite ease-in-out reverse;
+        }
+
+        @keyframes wave {
+            0% {
+                transform: skewX(0deg);
+            }
+
+            25% {
+                transform: skewX(5deg);
+            }
+
+            50% {
+                transform: skewX(0deg);
+            }
+
+            75% {
+                transform: skewX(-5deg);
+            }
+
+            100% {
+                transform: skewX(0deg);
+            }
+        }
+
+        /* Content section styling */
+        .content-section {
+            margin: 60px 0;
+        }
+
+        .content-section h2 {
+            color: var(--web3-green);
+            font-size: 32px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .content-section p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        /* Two column layout */
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        /* Feature card for values and mission */
+        .feature-card {
+            background-color: rgba(7, 7, 33, 0.5);
+            border: 1px solid rgba(0, 255, 128, 0.2);
+            border-radius: 4px;
+            padding: 30px;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            box-shadow: 0 0 15px rgba(0, 255, 128, 0.3);
+            transform: translateY(-3px);
+            border-color: rgba(0, 255, 128, 0.5);
+        }
+
+        .feature-card h3 {
+            color: var(--web3-green);
+            font-size: 24px;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        /* Team section */
+        .team {
+            margin: 60px 0;
+        }
+
+        .team-members {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .team-member {
+            background-color: rgba(7, 7, 33, 0.5);
+            border: 1px solid rgba(0, 255, 128, 0.2);
+            border-radius: 4px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .team-member:hover {
+            box-shadow: 0 0 15px rgba(0, 255, 128, 0.3);
+            transform: translateY(-5px);
+            border-color: rgba(0, 255, 128, 0.5);
+        }
+
+        .member-photo {
+            height: 250px;
+            background-color: var(--dark);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .member-photo::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(0, 255, 128, 0.2), rgba(144, 0, 255, 0.2));
+            z-index: 1;
+        }
+
+        .member-info {
+            padding: 20px;
+        }
+
+        .member-name {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--web3-green);
+            margin-bottom: 5px;
+        }
+
+        .member-title {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 15px;
+        }
+
+        .member-bio {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .social-link {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background-color: rgba(0, 255, 128, 0.1);
+            border: 1px solid rgba(0, 255, 128, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--web3-green);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            background-color: rgba(0, 255, 128, 0.2);
+            transform: translateY(-3px);
+        }
+
+        /* Timeline section */
+        .timeline {
+            margin: 60px 0;
+            position: relative;
+        }
+
+        .timeline-container {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--web3-green), var(--web3-purple));
+        }
+
+        .timeline-item {
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -49px;
+            top: 5px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--web3-green), var(--web3-purple));
+        }
+
+        .timeline-date {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--web3-green);
+            margin-bottom: 10px;
+        }
+
+        .timeline-content {
+            background-color: rgba(7, 7, 33, 0.5);
+            border: 1px solid rgba(0, 255, 128, 0.2);
+            border-radius: 4px;
+            padding: 20px;
+        }
+
+        .timeline-title {
+            font-size: 20px;
+            color: var(--light);
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        /* Stats section */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .stat {
+            background-color: rgba(7, 7, 33, 0.7);
+            padding: 20px;
+            border-radius: 4px;
+            border: 1px solid rgba(0, 255, 128, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: linear-gradient(45deg,
+                    rgba(0, 255, 128, 0.1),
+                    rgba(0, 0, 0, 0));
+            z-index: -1;
+        }
+
+        .stat-value {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            background: linear-gradient(90deg, var(--web3-green), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* CTA Section - Web3 themed */
+        .cta {
+            text-align: center;
+            padding: 60px 0;
+            margin: 40px 0;
+            position: relative;
+            overflow: hidden;
+            border-top: 1px solid rgba(0, 255, 128, 0.2);
+            border-bottom: 1px solid rgba(0, 255, 128, 0.2);
+        }
+
+        .cta h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, var(--web3-green), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .cta p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Web3 grid ground - blockchain reference */
+        .grid-ground {
+            position: relative;
+            height: 300px;
+            perspective: 1000px;
+            margin: 60px 0;
+            overflow: hidden;
+            border-radius: 4px;
+            border: 1px solid rgba(0, 255, 128, 0.3);
+        }
+
+        .grid {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            background-image:
+                linear-gradient(rgba(0, 255, 128, 0.5) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 128, 0.5) 1px, transparent 1px);
+            background-size: 50px 50px;
+            transform: rotateX(60deg);
+            animation: gridMove 20s linear infinite;
+            mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 0) 100%);
+            -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 0) 100%);
+        }
+
+        .grid::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-image: radial-gradient(circle at 50% 50%, rgba(0, 255, 128, 0.5) 0%, transparent 70%);
+            mix-blend-mode: screen;
+        }
+
+        @keyframes gridMove {
+            from {
+                transform: rotateX(60deg) translateY(0);
+            }
+
+            to {
+                transform: rotateX(60deg) translateY(50px);
+            }
+        }
+
+        /* Partners section */
+        .partners {
+            margin: 60px 0;
+        }
+
+        .partner-logos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .partner-logo {
+            background-color: rgba(7, 7, 33, 0.5);
+            border: 1px solid rgba(0, 255, 128, 0.2);
+            border-radius: 4px;
+            padding: 20px 30px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            filter: grayscale(100%) brightness(150%);
+            transition: all 0.3s;
+        }
+
+        .partner-logo:hover {
+            filter: grayscale(0%) brightness(100%);
+            border-color: rgba(0, 255, 128, 0.5);
+            box-shadow: 0 0 15px rgba(0, 255, 128, 0.3);
+        }
+
+        /* Footer - Modern with subtle web3 elements */
+        footer {
+            margin-top: 80px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(0, 255, 128, 0.2);
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-section h4 {
+            color: var(--web3-green);
+            margin-top: 0;
+            font-size: 18px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-section li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--web3-green);
+        }
+
+        .copyright {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        /* Make the lightning bolt correctly styled */
+        .service:nth-child(3) .service-icon {
+            color: var(--web3-green) !important;
+        }
+
+        /* Newsletter form with web3 style */
+        .newsletter {
+            margin-top: 15px;
+        }
+
+        .newsletter input {
+            background-color: rgba(7, 7, 33, 0.5);
+            border: 1px solid rgba(0, 255, 128, 0.3);
+            padding: 10px;
+            width: 100%;
+            max-width: 250px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            color: var(--light);
+            border-radius: 4px;
+        }
+
+        .newsletter button {
+            background: linear-gradient(90deg, var(--web3-green), var(--primary));
+            color: var(--dark);
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        /* Blockchain node background */
+        .nodes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            opacity: 0.3;
+        }
+
+        .node {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background-color: var(--web3-green);
+            border-radius: 50%;
+        }
+
+        .node::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 1px;
+            background: linear-gradient(90deg, var(--web3-green), transparent);
+            transform-origin: left center;
+        }
+
+        /* Media queries for responsiveness */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav {
+                margin-top: 20px;
+                flex-wrap: wrap;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-container {
+                padding-left: 30px;
+            }
+
+            .timeline-item::before {
+                left: -39px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Blockchain nodes background -->
+    <div class="nodes" id="nodes"></div>
+
+    <div class="container">
+        <header>
+            <div class="logo">AGORA4</div>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="jobs.html">Jobs</a>
+                <a href="employers.html">For Employers</a>
+                <a href="talent.html">For Talent</a>
+                <a href="about.html">About</a>
+                <a href="connect.html">Connect</a>
+            </nav>
+        </header>
+
+        <!-- Partners section -->
+        <section class="partners">
+            <h2>About Us</h2>
+            <p style="text-align: left; max-width: 800px; margin: 0 auto 40px;">At Agora4, we connect visionary Web3
+                projects with the exceptional talent they need to reshape the digital landscape. Founded in 2022, we saw
+                firsthand the disconnect between traditional recruitment models and the unique demands of blockchain
+                ventures, DAOs, and decentralized platforms. We built Agora4 to bridge this gap, creating a modern
+                talent marketplace that reflects the principles of the decentralized ecosystem we serve.</p>
+
+            <p style="text-align: left; max-width: 800px; margin: 0 auto 40px;">Our name draws inspiration from the
+                ancient Greek agora — a public space for assembly and commerce—reimagined for the Web3 era. Just as the
+                original agora served as the heart of civic life, Agora4 functions as the central gathering place where
+                innovative projects and skilled professionals converge.</p>
+
+            <h3 style="text-align: left; max-width: 800px; margin: 0 auto 40px; color: var(--web3-green);">What Sets
+                Agora4 Apart</h3>
+
+            <p style="text-align: left; max-width: 800px; margin: 0 auto 40px;"><strong>Web3-Native
+                    Understanding:</strong> Our recruitment team deeply understands blockchain infrastructure, smart
+                contract development, tokenomics, and decentralized governance.</p>
+
+            <p style="text-align: left; max-width: 800px; margin: 0 auto 40px;"><strong>Curated Talent Network:</strong>
+                We've cultivated relationships with developers, designers, product strategists, and community builders
+                who are passionate about decentralized technologies.</p>
+
+            <p style="text-align: left; max-width: 800px; margin: 0 auto 40px;"><strong>Values-First Matching:</strong>
+                Beyond technical skills, we ensure cultural alignment between candidates and organizations, recognizing
+                that shared vision drives successful Web3 ventures.</p>
+
+            <p style="text-align: left; max-width: 800px; margin: 0 auto 40px;"><strong>Global Reach:</strong> The
+                decentralized ecosystem transcends geographic boundaries—our talent network spans continents, bringing
+                diverse perspectives to your team.</p>
+
+            <p style="text-align: left; max-width: 800px; margin: 0 auto 40px;">We're not just filling positions; we're
+                assembling the teams that will define Web3's future. Whether you're a project seeking transformative
+                talent or a professional looking to make your impact in the decentralized space, Agora4 is where
+                possibilities converge.</p>
+
+            <p style="text-align: left; max-width: 800px; margin: 0 auto 40px;">Join us at the intersection of talent
+                and innovation—where we're building the decentralized future together.</p>
+        </section>
+
+        <!-- CTA section -->
+        <section class="cta">
+            <h2>Join Our Network</h2>
+            <p>Whether you're looking for your next role in Web3 or seeking to build your blockchain dream team, Agora4
+                connects the best talent with the most innovative projects.</p>
+            <a href="jobs.html" class="btn">Browse Opportunities</a>
+            <a href="employers.html" class="btn"
+                style="background: transparent; border: 2px solid var(--web3-green); color: var(--web3-green); margin-left: 15px;">Post
+                a Job</a>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About Agora4</h4>
+                    <p>Connecting top-tier blockchain talent with innovative projects across the decentralized
+                        ecosystem.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="jobs.html">Browse Jobs</a></li>
+                        <li><a href="employers.html">For Employers</a></li>
+                        <li><a href="talent.html">For Talent</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Web3 Career Guide</a></li>
+                        <li><a href="#">Salary Reports</a></li>
+                        <li><a href="#">Talent Network</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Stay Connected</h4>
+                    <p>Join our newsletter for Web3 career insights and job alerts</p>
+                    <div class="newsletter">
+                        <input type="email" placeholder="Your email address">
+                        <button>Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Agora4 - The Web3 Talent Agency. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

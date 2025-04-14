@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Agora4 - Web3 Jobs</title>
+    <style>
+        /* Modern base with web3/tech retro accents */
+        :root {
+            --primary: #00ffff;
+            --secondary: #ff00ff;
+            --accent: #ffff00;
+            --web3-green: #00ff80;
+            --web3-purple: #9000ff;
+            --dark: #070721;
+            --darker: #050518;
+            --light: #ffffff;
+        }
+
+        body {
+            background-color: var(--darker);
+            color: var(--light);
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: rgba(7, 7, 33, 0.8);
+            padding: 30px;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+            border: 1px solid rgba(0, 255, 128, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(0, 255, 128, 0.3);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            background: linear-gradient(90deg, var(--web3-green), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 5px rgba(0, 255, 128, 0.5);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo::before {
+            content: '◊';
+            font-size: 32px;
+            margin-right: 10px;
+            -webkit-text-fill-color: var(--web3-green);
+        }
+
+        /* Modern navigation */
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--light);
+            font-weight: 500;
+            padding: 8px 15px;
+            transition: all 0.3s;
+            position: relative;
+            z-index: 1;
+        }
+
+        nav a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background: linear-gradient(to top, var(--web3-green), transparent);
+            z-index: -1;
+            transition: height 0.3s;
+        }
+
+        nav a:hover::before {
+            height: 100%;
+        }
+
+        /* Hero section with wavy nets */
+        .hero {
+            position: relative;
+            height: 400px;
+            margin: 40px 0;
+            overflow: hidden;
+            background-color: var(--dark);
+            border: 1px solid rgba(0, 255, 128, 0.3);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero-content {
+            z-index: 2;
+            padding: 20px;
+            max-width: 700px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px var(--web3-green);
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .btn {
+            background: linear-gradient(90deg, var(--web3-green), var(--primary));
+            color: var(--dark);
+            font-weight: 600;
+            padding: 12px 28px;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            box-shadow: 0 0 15px rgba(0, 255, 128, 0.8);
+            transform: translateY(-3px);
+        }
+
+        /* Wavy Net animations - web3 themed */
+        .net-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        .net {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: linear-gradient(90deg,
+                    rgba(144, 0, 255, 0) 0%,
+                    rgba(144, 0, 255, 0.2) 49%,
+                    rgba(144, 0, 255, 0) 100%);
+            opacity: 0.7;
+            mix-blend-mode: screen;
+        }
+
+        .net-1 {
+            background-image: repeating-linear-gradient(0deg,
+                    transparent,
+                    transparent 29px,
+                    rgba(0, 255, 128, 0.5) 30px,
+                    rgba(0, 255, 128, 0.5) 31px);
+            animation: wave 15s infinite ease-in-out;
+        }
+
+        .net-2 {
+            background-image: repeating-linear-gradient(90deg,
+                    transparent,
+                    transparent 29px,
+                    rgba(144, 0, 255, 0.5) 30px,
+                    rgba(144, 0, 255, 0.5) 31px);
+            animation: wave 18s infinite ease-in-out reverse;
+        }
+
+        @keyframes wave {
+            0% {
+                transform: skewX(0deg);
+            }
+
+            25% {
+                transform: skewX(5deg);
+            }
+
+            50% {
+                transform: skewX(0deg);
+            }
+
+            75% {
+                transform: skewX(-5deg);
+            }
+
+            100% {
+                transform: skewX(0deg);
+            }
+        }
+
+        /* Job listings - styled like blockchain transactions */
+        .jobs {
+            margin: 50px 0;
+        }
+
+        .job-card {
+            background-color: rgba(7, 7, 33, 0.5);
+            border: 1px solid rgba(0, 255, 128, 0.2);
+            border-radius: 4px;
+            padding: 25px;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .job-card:hover {
+            box-shadow: 0 0 15px rgba(0, 255, 128, 0.3);
+            transform: translateY(-3px);
+            border-color: rgba(0, 255, 128, 0.5);
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .job-title {
+            color: var(--web3-green);
+            font-size: 22px;
+            margin: 0 0 5px 0;
+        }
+
+        .job-company {
+            color: var(--light);
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .job-tag {
+            background: linear-gradient(90deg, var(--web3-purple), var(--web3-green));
+            color: var(--dark);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .job-details {
+            display: flex;
+            margin: 15px 0;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .job-detail {
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .job-detail::before {
+            content: '◊';
+            margin-right: 5px;
+            font-size: 12px;
+            color: var(--web3-green);
+        }
+
+        .job-actions {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .job-salary {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        /* Search and filter section */
+        .filter-section {
+            background-color: rgba(7, 7, 33, 0.5);
+            border: 1px solid rgba(0, 255, 128, 0.2);
+            border-radius: 4px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .filter-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .filter-item {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .filter-item label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--web3-green);
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .filter-item select,
+        .filter-item input {
+            width: 100%;
+            padding: 10px;
+            background-color: rgba(7, 7, 33, 0.7);
+            border: 1px solid rgba(0, 255, 128, 0.3);
+            border-radius: 4px;
+            color: var(--light);
+        }
+
+        .filter-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+        }
+
+        /* Job categories */
+        .job-categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 30px 0;
+        }
+
+        .category-tag {
+            background-color: rgba(7, 7, 33, 0.5);
+            border: 1px solid rgba(0, 255, 128, 0.3);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .category-tag:hover,
+        .category-tag.active {
+            background-color: rgba(0, 255, 128, 0.2);
+            border-color: var(--web3-green);
+        }
+
+        /* Featured section */
+        .featured-jobs {
+            margin-bottom: 40px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            color: var(--web3-green);
+            font-size: 24px;
+            margin: 0;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .page-link {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(7, 7, 33, 0.5);
+            border: 1px solid rgba(0, 255, 128, 0.2);
+            color: var(--light);
+            margin: 0 5px;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .page-link:hover,
+        .page-link.active {
+            background-color: rgba(0, 255, 128, 0.2);
+            border-color: var(--web3-green);
+        }
+
+        /* Footer - Modern with subtle web3 elements */
+        footer {
+            margin-top: 80px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(0, 255, 128, 0.2);
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-section h4 {
+            color: var(--web3-green);
+            margin-top: 0;
+            font-size: 18px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-section li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--web3-green);
+        }
+
+        .copyright {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        /* Blockchain node background */
+        .nodes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            opacity: 0.3;
+        }
+
+        .node {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background-color: var(--web3-green);
+            border-radius: 50%;
+        }
+
+        .node::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 1px;
+            background: linear-gradient(90deg, var(--web3-green), transparent);
+            transform-origin: left center;
+        }
+
+        /* Make the lightning bolt correctly styled */
+        .service:nth-child(3) .service-icon {
+            color: var(--web3-green) !important;
+        }
+
+        /* Media queries for responsiveness */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav {
+                margin-top: 20px;
+                flex-wrap: wrap;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .filter-row {
+                flex-direction: column;
+            }
+
+            .job-header {
+                flex-direction: column;
+            }
+
+            .job-tag {
+                margin-top: 10px;
+                align-self: flex-start;
+            }
+
+            .job-details {
+                flex-direction: column;
+            }
+
+            .job-detail {
+                margin-bottom: 5px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Blockchain nodes background -->
+    <div class="nodes" id="nodes"></div>
+
+    <div class="container">
+        <header>
+            <div class="logo">AGORA4</div>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="jobs.html">Jobs</a>
+                <a href="employers.html">For Employers</a>
+                <a href="talent.html">For Talent</a>
+                <a href="about.html">About</a>
+                <a href="connect.html">Connect</a>
+            </nav>
+        </header>
+
+        <!-- Hero with wavy nets -->
+        <section class="hero">
+            <div class="net-container">
+                <div class="net net-1"></div>
+                <div class="net net-2"></div>
+            </div>
+
+            <div class="hero-content">
+                <h1>Web3 Job Opportunities</h1>
+                <p>Discover the future of work in the decentralized economy with our curated selection of blockchain,
+                    DeFi, and Web3 positions.</p>
+                <a href="#jobs-list" class="btn">Browse Jobs</a>
+            </div>
+        </section>
+
+        <!-- Job search and filter section -->
+        <section class="filter-section">
+            <h2 class="section-title">Find Your Perfect Web3 Role</h2>
+            <div class="filter-row">
+                <div class="filter-item">
+                    <label for="keyword">Keywords</label>
+                    <input type="text" id="keyword" placeholder="Job title, skills, or technologies">
+                </div>
+                <div class="filter-item">
+                    <label for="location">Location</label>
+                    <input type="text" id="location" placeholder="Remote, city, or country">
+                </div>
+            </div>
+
+            <div class="filter-row">
+                <div class="filter-item">
+                    <label for="job-type">Job Type</label>
+                    <select id="job-type">
+                        <option value="">All Types</option>
+                        <option value="full-time">Full-time</option>
+                        <option value="contract">Contract</option>
+                        <option value="part-time">Part-time</option>
+                        <option value="freelance">Freelance</option>
+                    </select>
+                </div>
+                <div class="filter-item">
+                    <label for="experience">Experience Level</label>
+                    <select id="experience">
+                        <option value="">All Levels</option>
+                        <option value="entry">Entry Level</option>
+                        <option value="mid">Mid Level</option>
+                        <option value="senior">Senior Level</option>
+                        <option value="lead">Lead / Manager</option>
+                    </select>
+                </div>
+                <div class="filter-item">
+                    <label for="salary">Salary Range</label>
+                    <select id="salary">
+                        <option value="">Any Salary</option>
+                        <option value="50k-80k">$50k - $80k</option>
+                        <option value="80k-120k">$80k - $120k</option>
+                        <option value="120k-160k">$120k - $160k</option>
+                        <option value="160k+">$160k+</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="filter-actions">
+                <button class="btn"
+                    style="background: transparent; border: 1px solid var(--web3-green); color: var(--web3-green);">Reset
+                    Filters</button>
+                <button class="btn">Search Jobs</button>
+            </div>
+        </section>
+
+        <!-- Job categories section -->
+        <section>
+            <div class="job-categories">
+                <div class="category-tag active">All Categories</div>
+                <div class="category-tag">Smart Contract Development</div>
+                <div class="category-tag">DeFi</div>
+                <div class="category-tag">NFTs</div>
+                <div class="category-tag">Layer 2</div>
+                <div class="category-tag">Zero Knowledge</div>
+                <div class="category-tag">DAOs</div>
+                <div class="category-tag">Metaverse</div>
+                <div class="category-tag">Infrastructure</div>
+            </div>
+        </section>
+
+        <!-- Featured jobs section -->
+        <section class="featured-jobs">
+            <div class="section-header">
+                <h2 class="section-title">Featured Opportunities</h2>
+                <a href="#" style="color: var(--web3-green); text-decoration: none;">View All Featured</a>
+            </div>
+
+            <div class="job-card">
+                <div class="job-header">
+                    <div>
+                        <h3 class="job-title">Senior Solidity Developer</h3>
+                        <div class="job-company">Major L1</div>
+                    </div>
+                    <span class="job-tag">Full-time</span>
+                </div>
+                <p>Design and implement smart contracts and blockchain solutions that power decentralized applications
+                    with
+                    focus on security, efficiency, and user experience.</p>
+                <div class="job-details">
+                    <span class="job-detail">Remote</span>
+                    <span class="job-detail">4+ Years Experience</span>
+                    <span class="job-detail">DeFi Focus</span>
+                </div>
+                <div class="job-actions">
+                    <span class="job-salary">150-200k + Token Incentives</span>
+                    <a href="#" class="btn" style="padding: 8px 15px; font-size: 14px;">Apply Now</a>
+                </div>
+            </div>
+
+            <div class="job-card">
+                <div class="job-header">
+                    <div>
+                        <h3 class="job-title">Blockchain Product Manager</h3>
+                        <div class="job-company">Polkadot Ecosystem Project</div>
+                    </div>
+                    <span class="job-tag">Full-time</span>
+                </div>
+                <p>Lead cross-functional teams in the development of next-generation blockchain products with a focus on
+                    scalability, interoperability, and market adoption.</p>
+                <div class="job-details">
+                    <span class="job-detail">Berlin/Remote</span>
+                    <span class="job-detail">3+ Years Experience</span>
+                    <span class="job-detail">Cross-chain</span>
+                </div>
+                <div class="job-actions">
+                    <span class="job-salary">120-160k + Equity</span>
+                    <a href="#" class="btn" style="padding: 8px 15px; font-size: 14px;">Apply Now</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main job listings -->
+        <section id="jobs-list" class="jobs">
+            <div class="section-header">
+                <h2 class="section-title">All Opportunities</h2>
+                <div>
+                    <label for="sort-by" style="margin-right: 10px; color: rgba(255, 255, 255, 0.7);">Sort by:</label>
+                    <select id="sort-by"
+                        style="background-color: rgba(7, 7, 33, 0.7); color: var(--light); border: 1px solid rgba(0, 255, 128, 0.3); padding: 5px 10px; border-radius: 4px;">
+                        <option value="newest">Newest</option>
+                        <option value="salary-high">Salary (High to Low)</option>
+                        <option value="salary-low">Salary (Low to High)</option>
+                        <option value="relevance">Relevance</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="job-card">
+                <div class="job-header">
+                    <div>
+                        <h3 class="job-title">Founding Smart Contract/Protocol Engineer</h3>
+                        <div class="job-company">L2 for Customizable Appchains</div>
+                    </div>
+                    <span class="job-tag">Full-time</span>
+                </div>
+                <p>Build a Based Appchain framework on Ethereum that enables spinning up app-specific L2s composable
+                    with Ethereum mainnet and other app chains.</p>
+                <div class="job-details">
+                    <span class="job-detail">Remote Worldwide</span>
+                    <span class="job-detail">Solidity/Rust Expert</span>
+                    <span class="job-detail">Rollup Development</span>
+                </div>
+                <div class="job-actions">
+                    <span class="job-salary">Competitive + Equity</span>
+                    <a href="#" class="btn" style="padding: 8px 15px; font-size: 14px;">Apply Now</a>
+                </div>
+            </div>
+
+            <div class="job-card">
+                <div class="job-header">
+                    <div>
+                        <h3 class="job-title">Front-End Engineer</h3>
+                        <div class="job-company">Solana Wallet</div>
+                    </div>
+                    <span class="job-tag">Full-time</span>
+                </div>
+                <p>Create engaging, user-friendly experiences for our flagship crypto-native financial platform. Develop
+                    front-end features focusing on functionality, scalability, and user experience.</p>
+                <div class="job-details">
+                    <span class="job-detail">Chicago/Dubai/Tokyo/Remote</span>
+                    <span class="job-detail">5+ Years Experience</span>
+                    <span class="job-detail">React Expert</span>
+                </div>
+                <div class="job-actions">
+                    <span class="job-salary">Competitive + Equity</span>
+                    <a href="#" class="btn" style="padding: 8px 15px; font-size: 14px;">Apply Now</a>
+                </div>
+            </div>
+
+            <div class="job-card">
+                <div class="job-header">
+                    <div>
+                        <h3 class="job-title">Backend Infrastructure Engineer</h3>
+                        <div class="job-company">Solana RPC provider</div>
+                    </div>
+                    <span class="job-tag">Full-time</span>
+                </div>
+                <p>Design, implement, and maintain scalable backend infrastructure for performant distributed systems.
+                    Optimize performance and develop monitoring systems for high availability.</p>
+                <div class="job-details">
+                    <span class="job-detail">Remote</span>
+                    <span class="job-detail">5+ Years Experience</span>
+                    <span class="job-detail">Rust/Go/TypeScript</span>
+                </div>
+                <div class="job-actions">
+                    <span class="job-salary">Competitive + Equity</span>
+                    <a href="#" class="btn" style="padding: 8px 15px; font-size: 14px;">Apply Now</a>
+                </div>
+            </div>
+
+            <div class="job-card">
+                <div class="job-header">
+                    <div>
+                        <h3 class="job-title">Principal Platform Engineer</h3>
+                        <div class="job-company">Solana RPC Provider</div>
+                    </div>
+                    <span class="job-tag">Full-time</span>
+                </div>
+                <p>Build internal developer platform and scale host & software management solutions for thousands of
+                    bare-metal servers, including Solana validators and RPC fleet.</p>
+                <div class="job-details">
+                    <span class="job-detail">Remote</span>
+                    <span class="job-detail">8+ Years Experience</span>
+                    <span class="job-detail">DevOps/SRE</span>
+                </div>
+                <div class="job-actions">
+                    <span class="job-salary">Competitive + Equity</span>
+                    <a href="#" class="btn" style="padding: 8px 15px; font-size: 14px;">Apply Now</a>
+                </div>
+            </div>
+
+            <div class="job-card">
+                <div class="job-header">
+                    <div>
+                        <h3 class="job-title">Founding Security Engineer</h3>
+                        <div class="job-company">Agentic Security Product</div>
+                    </div>
+                    <span class="job-tag">Full-time</span>
+                </div>
+                <p>Perform in-depth security reviews of smart contract code, generate data for ML bug detection models,
+                    and build code parsers for security analysis.</p>
+                <div class="job-details">
+                    <span class="job-detail">Remote</span>
+                    <span class="job-detail">2+ Years Experience</span>
+                    <span class="job-detail">Smart Contract Auditing</span>
+                </div>
+                <div class="job-actions">
+                    <span class="job-salary">Competitive + Benefits</span>
+                    <a href="#" class="btn" style="padding: 8px 15px; font-size: 14px;">Apply Now</a>
+                </div>
+            </div>
+
+            <div class="job-card">
+                <div class="job-header">
+                    <div>
+                        <h3 class="job-title">Senior Frontend Engineer</h3>
+                        <div class="job-company">Stablecoin Project</div>
+                    </div>
+                    <span class="job-tag">Full-time</span>
+                </div>
+                <p>Develop high-quality UI for delta-neutral stablecoin and liquidity pool platform. Build user
+                    interfaces for dApps, implement client-side signing, and secure crypto transactions.</p>
+                <div class="job-details">
+                    <span class="job-detail">Remote (±3h CET)</span>
+                    <span class="job-detail">5+ Years Experience</span>
+                    <span class="job-detail">React/TypeScript</span>
+                </div>
+                <div class="job-actions">
+                    <span class="job-salary">Competitive + Equity</span>
+                    <a href="#" class="btn" style="padding: 8px 15px; font-size: 14px;">Apply Now</a>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <a href="#" class="page-link active">1</a>
+                <a href="#" class="page-link">2</a>
+                <a href="#" class="page-link">3</a>
+                <a href="#" class="page-link">4</a>
+                <a href="#" class="page-link">5</a>
+                <a href="#" class="page-link">→</a>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About Agora4</h4>
+                    <p>Connecting top-tier blockchain talent with innovative projects across the decentralized
+                        ecosystem.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="jobs.html">Browse Jobs</a></li>
+                        <li><a href="employers.html">For Employers</a></li>
+                        <li><a href="talent.html">For Talent</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Web3 Career Guide</a></li>
+                        <li><a href="#">Salary Reports</a></li>
+                        <li><a href="#">Talent Network</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Stay Connected</h4>
+                    <p>Join our newsletter for Web3 career insights and job alerts</p>
+                    <div class="newsletter">
+                        <input type="email" placeholder="Your email address">
+                        <button>Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Agora4 - The Web3 Talent Agency. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

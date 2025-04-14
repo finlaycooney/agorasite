@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Agora4 - For Employers</title>
+    <style>
+        /* Modern base with web3/tech retro accents */
+        :root {
+            --primary: #00ffff;
+            --secondary: #ff00ff;
+            --accent: #ffff00;
+            --web3-green: #00ff80;
+            --web3-purple: #9000ff;
+            --dark: #070721;
+            --darker: #050518;
+            --light: #ffffff;
+        }
+
+        body {
+            background-color: var(--darker);
+            color: var(--light);
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: rgba(7, 7, 33, 0.8);
+            padding: 30px;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+            border: 1px solid rgba(0, 255, 128, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(0, 255, 128, 0.3);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            background: linear-gradient(90deg, var(--web3-green), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 5px rgba(0, 255, 128, 0.5);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo::before {
+            content: '◊';
+            font-size: 32px;
+            margin-right: 10px;
+            -webkit-text-fill-color: var(--web3-green);
+        }
+
+        /* Modern navigation */
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--light);
+            font-weight: 500;
+            padding: 8px 15px;
+            transition: all 0.3s;
+            position: relative;
+            z-index: 1;
+        }
+
+        nav a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background: linear-gradient(to top, var(--web3-green), transparent);
+            z-index: -1;
+            transition: height 0.3s;
+        }
+
+        nav a:hover::before {
+            height: 100%;
+        }
+
+        /* Hero section with wavy nets */
+        .hero {
+            position: relative;
+            height: 400px;
+            margin: 40px 0;
+            overflow: hidden;
+            background-color: var(--dark);
+            border: 1px solid rgba(0, 255, 128, 0.3);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero-content {
+            z-index: 2;
+            padding: 20px;
+            max-width: 700px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px var(--web3-green);
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .btn {
+            background: linear-gradient(90deg, var(--web3-green), var(--primary));
+            color: var(--dark);
+            font-weight: 600;
+            padding: 12px 28px;
+            border-radius: 4px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn:hover {
+            box-shadow: 0 0 15px rgba(0, 255, 128, 0.8);
+            transform: translateY(-3px);
+        }
+
+        /* Wavy Net animations - web3 themed */
+        .net-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        .net {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: linear-gradient(90deg,
+                    rgba(144, 0, 255, 0) 0%,
+                    rgba(144, 0, 255, 0.2) 49%,
+                    rgba(144, 0, 255, 0) 100%);
+            opacity: 0.7;
+            mix-blend-mode: screen;
+        }
+
+        .net-1 {
+            background-image: repeating-linear-gradient(0deg,
+                    transparent,
+                    transparent 29px,
+                    rgba(0, 255, 128, 0.5) 30px,
+                    rgba(0, 255, 128, 0.5) 31px);
+            animation: wave 15s infinite ease-in-out;
+        }
+
+        .net-2 {
+            background-image: repeating-linear-gradient(90deg,
+                    transparent,
+                    transparent 29px,
+                    rgba(144, 0, 255, 0.5) 30px,
+                    rgba(144, 0, 255, 0.5) 31px);
+            animation: wave 18s infinite ease-in-out reverse;
+        }
+
+        @keyframes wave {
+            0% {
+                transform: skewX(0deg);
+            }
+
+            25% {
+                transform: skewX(5deg);
+            }
+
+            50% {
+                transform: skewX(0deg);
+            }
+
+            75% {
+                transform: skewX(-5deg);
+            }
+
+            100% {
+                transform: skewX(0deg);
+            }
+        }
+
+        /* Services section - web3 jobs focus */
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .service {
+            background-color: rgba(7, 7, 33, 0.5);
+            padding: 30px;
+            border-radius: 4px;
+            border: 1px solid rgba(0, 255, 128, 0.2);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service:hover {
+            box-shadow: 0 0 20px rgba(0, 255, 128, 0.4);
+            transform: translateY(-5px);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            color: var(--web3-green);
+            position: relative;
+        }
+
+        .service-icon::after {
+            content: '◊';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            font-size: 40px;
+            opacity: 0.2;
+            transform: rotate(0deg);
+            z-index: -1;
+            animation: float 5s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-10px) rotate(10deg);
+            }
+
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+        }
+
+        .service h3 {
+            margin-top: 0;
+            color: var(--web3-green);
+            font-size: 22px;
+        }
+
+        /* Web3 grid ground - blockchain reference */
+        .grid-ground {
+            position: relative;
+            height: 300px;
+            perspective: 1000px;
+            margin: 60px 0;
+            overflow: hidden;
+            border-radius: 4px;
+            border: 1px solid rgba(0, 255, 128, 0.3);
+        }
+
+        .grid {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            background-image:
+                linear-gradient(rgba(0, 255, 128, 0.5) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 128, 0.5) 1px, transparent 1px);
+            background-size: 50px 50px;
+            transform: rotateX(60deg);
+            animation: gridMove 20s linear infinite;
+            mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 0) 100%);
+            -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 0) 100%);
+        }
+
+        .grid::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-image: radial-gradient(circle at 50% 50%, rgba(0, 255, 128, 0.5) 0%, transparent 70%);
+            mix-blend-mode: screen;
+        }
+
+        @keyframes gridMove {
+            from {
+                transform: rotateX(60deg) translateY(0);
+            }
+
+            to {
+                transform: rotateX(60deg) translateY(50px);
+            }
+        }
+
+        /* Pricing section with plans */
+        .pricing {
+            margin: 60px 0;
+        }
+
+        .pricing-plans {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .plan {
+            background-color: rgba(7, 7, 33, 0.5);
+            border: 1px solid rgba(0, 255, 128, 0.2);
+            border-radius: 4px;
+            padding: 30px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .plan:hover {
+            box-shadow: 0 0 20px rgba(0, 255, 128, 0.3);
+            transform: translateY(-5px);
+            border-color: rgba(0, 255, 128, 0.5);
+        }
+
+        .plan-header {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(0, 255, 128, 0.2);
+        }
+
+        .plan-name {
+            color: var(--web3-green);
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .plan-price {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--light);
+        }
+
+        .plan-billing {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .plan-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 30px 0;
+        }
+
+        .plan-features li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .plan-features li::before {
+            content: '✓';
+            color: var(--web3-green);
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .featured-plan {
+            border: 2px solid var(--web3-green);
+            box-shadow: 0 0 20px rgba(0, 255, 128, 0.3);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 12px;
+            right: -30px;
+            background: linear-gradient(90deg, var(--web3-purple), var(--web3-green));
+            color: var(--dark);
+            padding: 5px 40px;
+            font-size: 12px;
+            font-weight: 600;
+            transform: rotate(45deg);
+        }
+
+        /* Stats section */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .stat {
+            background-color: rgba(7, 7, 33, 0.7);
+            padding: 20px;
+            border-radius: 4px;
+            border: 1px solid rgba(0, 255, 128, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: linear-gradient(45deg,
+                    rgba(0, 255, 128, 0.1),
+                    rgba(0, 0, 0, 0));
+            z-index: -1;
+        }
+
+        .stat-value {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            background: linear-gradient(90deg, var(--web3-green), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Steps section */
+        .steps {
+            margin: 60px 0;
+        }
+
+        .step-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin-top: 40px;
+            position: relative;
+        }
+
+        .step-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 25px;
+            height: 100%;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--web3-green), var(--web3-purple));
+            z-index: 0;
+        }
+
+        .step {
+            display: flex;
+            gap: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--web3-green), var(--web3-purple));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--dark);
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            background-color: rgba(7, 7, 33, 0.5);
+            border: 1px solid rgba(0, 255, 128, 0.2);
+            border-radius: 4px;
+            padding: 25px;
+            flex-grow: 1;
+        }
+
+        .step-title {
+            color: var(--web3-green);
+            font-size: 20px;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        /* Testimonials with web3 theme */
+        .testimonials {
+            margin: 60px 0;
+            position: relative;
+        }
+
+        .testimonial {
+            background-color: rgba(7, 7, 33, 0.5);
+            border: 1px solid rgba(0, 255, 128, 0.2);
+            border-radius: 4px;
+            padding: 30px;
+            position: relative;
+        }
+
+        .testimonial-content {
+            font-size: 18px;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .testimonial-content::before {
+            content: '"';
+            font-size: 60px;
+            color: rgba(0, 255, 128, 0.2);
+            position: absolute;
+            top: -20px;
+            left: -20px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgba(144, 0, 255, 0.3);
+            margin-right: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .author-avatar::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(0, 255, 128, 0.5), rgba(144, 0, 255, 0.5));
+            animation: rotate 10s linear infinite;
+        }
+
+        .author-name {
+            font-weight: 600;
+            color: var(--web3-green);
+        }
+
+        .author-title {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+        }
+
+        /* FAQ section */
+        .faq {
+            margin: 60px 0;
+        }
+
+        .faq-item {
+            background-color: rgba(7, 7, 33, 0.5);
+            border: 1px solid rgba(0, 255, 128, 0.2);
+            border-radius: 4px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .faq-question h3 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--light);
+        }
+
+        .faq-question:hover {
+            background-color: rgba(0, 255, 128, 0.1);
+        }
+
+        .faq-answer {
+            padding: 0 20px 20px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* CTA Section - Web3 themed */
+        .cta {
+            text-align: center;
+            padding: 60px 0;
+            margin: 40px 0;
+            position: relative;
+            overflow: hidden;
+            border-top: 1px solid rgba(0, 255, 128, 0.2);
+            border-bottom: 1px solid rgba(0, 255, 128, 0.2);
+        }
+
+        .cta h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, var(--web3-green), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .cta p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Footer - Modern with subtle web3 elements */
+        footer {
+            margin-top: 80px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(0, 255, 128, 0.2);
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-section h4 {
+            color: var(--web3-green);
+            margin-top: 0;
+            font-size: 18px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-section li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--web3-green);
+        }
+
+        .copyright {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        /* Make the lightning bolt correctly styled */
+        .service:nth-child(3) .service-icon {
+            color: var(--web3-green) !important;
+        }
+
+        /* Contact form */
+        .contact-form {
+            background-color: rgba(7, 7, 33, 0.5);
+            border: 1px solid rgba(0, 255, 128, 0.2);
+            border-radius: 4px;
+            padding: 30px;
+            margin-top: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--web3-green);
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            background-color: rgba(7, 7, 33, 0.7);
+            border: 1px solid rgba(0, 255, 128, 0.3);
+            border-radius: 4px;
+            color: var(--light);
+            font-size: 16px;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        /* Media queries for responsiveness */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav {
+                margin-top: 20px;
+                flex-wrap: wrap;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .form-row {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .step {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .step-container::before {
+                left: 24px;
+                height: calc(100% - 50px);
+                top: 50px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Blockchain nodes background -->
+    <div class="nodes" id="nodes"></div>
+
+    <div class="container">
+        <header>
+            <div class="logo">AGORA4</div>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="jobs.html">Jobs</a>
+                <a href="employers.html">For Employers</a>
+                <a href="talent.html">For Talent</a>
+                <a href="about.html">About</a>
+                <a href="connect.html">Connect</a>
+            </nav>
+        </header>
+
+        <!-- Hero with wavy nets -->
+        <section class="hero">
+            <div class="net-container">
+                <div class="net net-1"></div>
+                <div class="net net-2"></div>
+            </div>
+
+            <div class="hero-content">
+                <h1>Access Elite Web3 Talent</h1>
+                <p>Connect with specialized blockchain professionals to build your decentralized vision. Our curated
+                    talent network includes developers, designers, and strategists focused on the future of Web3.</p>
+                <a href="#contact" class="btn"
+                    style="background: transparent; border: 2px solid var(--web3-green); color: var(--web3-green); margin-left: 15px;">Schedule
+                    a Call</a>
+            </div>
+        </section>
+
+        <!-- Stats section -->
+        <section class="stats">
+            <div class="stat">
+                <div class="stat-value">85%</div>
+                <div class="stat-label">Faster Placements</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">3,200+</div>
+                <div class="stat-label">Vetted Professionals</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">180+</div>
+                <div class="stat-label">Partner Projects</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">97%</div>
+                <div class="stat-label">Retention Rate</div>
+            </div>
+        </section>
+
+        <!-- Services section -->
+        <section>
+            <h2 style="text-align: center; margin-bottom: 40px; color: var(--web3-green);">Our Employer Services</h2>
+
+            <div class="services">
+                <div class="service">
+                    <div class="service-icon">⌘</div>
+                    <h3>Direct Placement</h3>
+                    <p>Find full-time Web3 professionals for permanent roles. We handle sourcing, screening, and
+                        matching to find the perfect fit for your blockchain projects.</p>
+                </div>
+
+                <div class="service">
+                    <div class="service-icon">⚙</div>
+                    <h3>Contract Teams</h3>
+                    <p>Access specialized blockchain contractors for project-based work. Scale your team up or down as
+                        needed with experienced Web3 professionals.</p>
+                </div>
+
+                <div class="service">
+                    <div class="service-icon">◊</div>
+                    <h3>Executive Search</h3>
+                    <p>Recruit C-level and leadership talent with deep blockchain expertise. Our specialized headhunting
+                        for Web3 executives ensures you find visionary leaders.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why choose us section -->
+        <section class="grid-ground">
+            <div class="grid"></div>
+            <div
+                style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1; text-align: center; width: 80%;">
+                <h2 style="margin-bottom: 15px; color: var(--light); text-shadow: 0 0 10px var(--web3-green);">Why
+                    Partner With Agora4?</h2>
+                <p style="color: var(--light); text-shadow: 0 0 5px var(--web3-green);">We understand the unique talent
+                    needs of blockchain projects and connect you with professionals who can build your decentralized
+                    vision.</p>
+            </div>
+        </section>
+
+        <!-- How it works section -->
+        <section class="steps">
+            <h2 style="text-align: center; margin-bottom: 40px; color: var(--web3-green);">How It Works</h2>
+
+            <div class="step-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Discovery Call</h3>
+                        <p>We begin with a thorough consultation to understand your project needs, company culture, and
+                            specific technical requirements for your Web3 roles.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Talent Matching</h3>
+                        <p>Our specialized recruiters leverage our network of pre-vetted blockchain professionals to
+                            identify candidates with the exact skills and experience you need.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Candidate Presentation</h3>
+                        <p>We present a shortlist of qualified candidates, complete with detailed profiles, portfolio
+                            reviews, and technical assessment results tailored to your requirements.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Seamless Onboarding</h3>
+                        <p>After your selection, we handle all contracting, compliance, and onboarding processes,
+                            ensuring a smooth transition for both you and your new team members.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing section -->
+        <section class="pricing">
+            <h2 style="text-align: center; margin-bottom: 40px; color: var(--web3-green);">Talent Solutions</h2>
+
+            <div class="pricing-plans">
+                <div class="plan">
+                    <div class="plan-header">
+                        <h3 class="plan-name">Flexible pricing tailored to your needs</h3>
+                        <p class="plan-price">Custom Hiring Products For Your Company</p>
+                    </div>
+                    <ul class="plan-features">
+                        <li>Full-service recruitment solution</li>
+                        <li>Unlimited job postings</li>
+                        <li>Custom talent pipeline</li>
+                        <li>Technical team assessment</li>
+                        <li>Onboarding support</li>
+                    </ul>
+                    <a href="#" class="btn" style="width: 100%;">Get Started</a>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Testimonials section <section class="testimonials">
+            <h2 style="text-align: center; margin-bottom: 40px; color: var(--web3-green);">What Our Partners Say</h2>
+
+            <div class="testimonial">
+                <div class="testimonial-content">
+                    <p>Agora4 has been instrumental in helping us build our protocol team. Their deep understanding of
+                        the Web3 ecosystem and access to specialized talent has accelerated our development timeline
+                        significantly.</p>
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-avatar"></div>
+                    <div>
+                        <div class="author-name">Elena Kowalski</div>
+                        <div class="author-title">CTO, Ethereum Foundation</div>
+                    </div>
+                </div>
+            </div>
+            </section>
+        -->
+        <!-- FAQ section -->
+        <section class="faq">
+            <h2 style="text-align: center; margin-bottom: 40px; color: var(--web3-green);">Frequently Asked
+                Questions
+            </h2>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>How does your vetting process work for Web3 talent?</h3>
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Our vetting process includes multiple stages: technical assessments specific to blockchain
+                        technologies, portfolio reviews, reference checks, and culture fit evaluations. For
+                        technical
+                        roles, we conduct code reviews and challenge-based assessments. We verify experience with
+                        specific protocols and knowledge of cryptographic principles for specialized positions.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>What makes Agora4 different from other tech recruiters?</h3>
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Unlike general tech recruiters, we exclusively focus on Web3, blockchain, and crypto talent.
+                        Our
+                        team includes former blockchain developers and project managers who understand the
+                        technology
+                        deeply. We maintain active participation in major Web3 communities and events, giving us
+                        access
+                        to passive candidates not available on traditional job boards.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>How long does it typically take to fill a position?</h3>
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>For most technical Web3 roles, we can present qualified candidates within 1-2 days. The
+                        entire
+                        process from initial consultation to offer acceptance typically takes 3-4 weeks, though this
+                        varies based on role complexity and your interview process. For specialized positions like
+                        cryptography researchers or protocol architects, the timeline may extend to 4-6 weeks. We will
+                        work
+                        to deadlines that you need.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Do you work with early-stage projects or just established companies?</h3>
+                    <span>+</span>
+                </div>
+                <div class="faq-answer">
+                    <p>We work with Web3 projects at all stages, from pre-seed startups to established protocols.
+                        For
+                        early-stage projects, we offer flexible payment terms and can help with technical co-founder
+                        matching. We understand the unique challenges of building foundational teams in the
+                        blockchain
+                        space and provide guidance on competitive compensation packages to attract top talent in
+                        this
+                        competitive market.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact section -->
+        <section id="contact">
+            <h2 style="text-align: center; margin-bottom: 40px; color: var(--web3-green);">Get Started</h2>
+
+            <div class="contact-form">
+                <form>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="company">Company Name</label>
+                            <input type="text" id="company" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="position">Your Position</label>
+                            <input type="text" id="position">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="service">Service of Interest</label>
+                        <select id="service" required>
+                            <option value="">Select a Service</option>
+                            <option value="direct">Direct Placement</option>
+                            <option value="contract">Contract Teams</option>
+                            <option value="executive">Executive Search</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Tell Us About Your Needs</label>
+                        <textarea id="message" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn" style="margin-top: 10px;">Request a Consultation</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- CTA section 
+        <section class="cta">
+            <h2>Build Your Web3 Dream Team</h2>
+            <p>Join the leading projects and protocols that trust Agora4 to build their decentralized future.</p>
+            <a href="#" class="btn">Post a Job Now</a>
+        </section>
+        -->
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About Agora4</h4>
+                    <p>Connecting top-tier blockchain talent with innovative projects across the decentralized
+                        ecosystem.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="jobs.html">Browse Jobs</a></li>
+                        <li><a href="employers.html">For Employers</a></li>
+                        <li><a href="talent.html">For Talent</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Web3 Career Guide</a></li>
+                        <li><a href="#">Salary Reports</a></li>
+                        <li><a href="#">Talent Network</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Stay Connected</h4>
+                    <p>Join our newsletter for Web3 career insights and job alerts</p>
+                    <div class="newsletter">
+                        <input type="email" placeholder="Your email address">
+                        <button>Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Agora4 - The Web3 Talent Agency. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

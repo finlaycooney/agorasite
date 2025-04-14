@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Agora4 - Web3 Talent Agency</title>
   <style>
@@ -14,7 +15,7 @@
       --darker: #050518;
       --light: #ffffff;
     }
-    
+
     body {
       background-color: var(--darker);
       color: var(--light);
@@ -24,7 +25,7 @@
       line-height: 1.6;
       overflow-x: hidden;
     }
-    
+
     .container {
       width: 90%;
       max-width: 1200px;
@@ -37,7 +38,7 @@
       border: 1px solid rgba(0, 255, 128, 0.3);
       backdrop-filter: blur(10px);
     }
-    
+
     header {
       display: flex;
       justify-content: space-between;
@@ -46,7 +47,7 @@
       padding-bottom: 20px;
       border-bottom: 1px solid rgba(0, 255, 128, 0.3);
     }
-    
+
     .logo {
       font-size: 28px;
       font-weight: 600;
@@ -58,20 +59,20 @@
       display: flex;
       align-items: center;
     }
-    
+
     .logo::before {
       content: '◊';
       font-size: 32px;
       margin-right: 10px;
       -webkit-text-fill-color: var(--web3-green);
     }
-    
+
     /* Modern navigation */
     nav {
       display: flex;
       gap: 20px;
     }
-    
+
     nav a {
       text-decoration: none;
       color: var(--light);
@@ -81,7 +82,7 @@
       position: relative;
       z-index: 1;
     }
-    
+
     nav a::before {
       content: '';
       position: absolute;
@@ -93,11 +94,11 @@
       z-index: -1;
       transition: height 0.3s;
     }
-    
+
     nav a:hover::before {
       height: 100%;
     }
-    
+
     /* Hero section with wavy nets */
     .hero {
       position: relative;
@@ -112,26 +113,26 @@
       justify-content: center;
       text-align: center;
     }
-    
+
     .hero-content {
       z-index: 2;
       padding: 20px;
       max-width: 700px;
     }
-    
+
     .hero h1 {
       font-size: 42px;
       font-weight: 700;
       margin-bottom: 20px;
       text-shadow: 0 0 10px var(--web3-green);
     }
-    
+
     .hero p {
       font-size: 18px;
       margin-bottom: 30px;
       color: rgba(255, 255, 255, 0.8);
     }
-    
+
     .btn {
       background: linear-gradient(90deg, var(--web3-green), var(--primary));
       color: var(--dark);
@@ -145,12 +146,12 @@
       cursor: pointer;
       font-size: 16px;
     }
-    
+
     .btn:hover {
       box-shadow: 0 0 15px rgba(0, 255, 128, 0.8);
       transform: translateY(-3px);
     }
-    
+
     /* Wavy Net animations - web3 themed */
     .net-container {
       position: absolute;
@@ -160,64 +161,84 @@
       left: 0;
       z-index: 1;
     }
-    
+
     .net {
       position: absolute;
       width: 100%;
       height: 100%;
       top: 0;
       left: 0;
-      background: linear-gradient(90deg, 
-        rgba(144, 0, 255, 0) 0%, 
-        rgba(144, 0, 255, 0.2) 49%, 
-        rgba(144, 0, 255, 0) 100%);
+      background: linear-gradient(90deg,
+          rgba(144, 0, 255, 0) 0%,
+          rgba(144, 0, 255, 0.2) 49%,
+          rgba(144, 0, 255, 0) 100%);
       opacity: 0.7;
       mix-blend-mode: screen;
     }
-    
+
     .net-1 {
-      background-image: repeating-linear-gradient(0deg, 
-        transparent, 
-        transparent 29px, 
-        rgba(0, 255, 128, 0.5) 30px, 
-        rgba(0, 255, 128, 0.5) 31px);
+      background-image: repeating-linear-gradient(0deg,
+          transparent,
+          transparent 29px,
+          rgba(0, 255, 128, 0.5) 30px,
+          rgba(0, 255, 128, 0.5) 31px);
       animation: wave 15s infinite ease-in-out;
     }
-    
+
     .net-2 {
-      background-image: repeating-linear-gradient(90deg, 
-        transparent, 
-        transparent 29px, 
-        rgba(144, 0, 255, 0.5) 30px, 
-        rgba(144, 0, 255, 0.5) 31px);
-      animation: wave 18s infinite ease-in-out reverse;
+      background-image: repeating-linear-gradient(90deg,
+          transparent,
+          transparent 29px,
+          rgba(144, 0, 255, 0.5) 30px,
+          rgba(144, 0, 255, 0.5) 31px);
+      animation: wave 19s infinite ease-in-out reverse;
     }
-    
+
     /* Hexagon pattern for blockchain reference */
     .net-3 {
-      background-image: radial-gradient(
-        circle at center,
-        rgba(0, 255, 128, 0.15) 10px,
-        transparent 11px
-      );
+      background-image: radial-gradient(circle at center,
+          rgba(247, 247, 247, 0) 10px,
+          transparent 11px);
       background-size: 50px 50px;
       animation: pulse 15s infinite ease-in-out;
     }
-    
+
     @keyframes wave {
-      0% { transform: skewX(0deg); }
-      25% { transform: skewX(5deg); }
-      50% { transform: skewX(0deg); }
-      75% { transform: skewX(-5deg); }
-      100% { transform: skewX(0deg); }
+      0% {
+        transform: skewX(0deg);
+      }
+
+      27% {
+        transform: skewX(5deg);
+      }
+
+      57% {
+        transform: skewX(0deg);
+      }
+
+      79% {
+        transform: skewX(-5deg);
+      }
+
+      100% {
+        transform: skewX(0deg);
+      }
     }
-    
+
     @keyframes pulse {
-      0% { opacity: 0.3; }
-      50% { opacity: 0.7; }
-      100% { opacity: 0.3; }
+      0% {
+        opacity: 0.3;
+      }
+
+      50% {
+        opacity: 0.7;
+      }
+
+      100% {
+        opacity: 0.3;
+      }
     }
-    
+
     /* Blockchain stats section */
     .stats {
       display: grid;
@@ -226,7 +247,7 @@
       margin: 40px 0;
       text-align: center;
     }
-    
+
     .stat {
       background-color: rgba(7, 7, 33, 0.7);
       padding: 20px;
@@ -235,7 +256,7 @@
       position: relative;
       overflow: hidden;
     }
-    
+
     .stat::before {
       content: '';
       position: absolute;
@@ -243,12 +264,12 @@
       height: 100%;
       top: 0;
       left: 0;
-      background: linear-gradient(45deg, 
-        rgba(0, 255, 128, 0.1), 
-        rgba(0, 0, 0, 0));
+      background: linear-gradient(45deg,
+          rgba(0, 255, 128, 0.1),
+          rgba(0, 0, 0, 0));
       z-index: -1;
     }
-    
+
     .stat-value {
       font-size: 36px;
       font-weight: 700;
@@ -257,14 +278,14 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    
+
     .stat-label {
       font-size: 14px;
       color: rgba(255, 255, 255, 0.7);
       text-transform: uppercase;
       letter-spacing: 1px;
     }
-    
+
     /* Services section - web3 jobs focus */
     .services {
       display: grid;
@@ -272,7 +293,7 @@
       gap: 30px;
       margin: 50px 0;
     }
-    
+
     .service {
       background-color: rgba(7, 7, 33, 0.5);
       padding: 30px;
@@ -282,12 +303,12 @@
       position: relative;
       overflow: hidden;
     }
-    
+
     .service:hover {
       box-shadow: 0 0 20px rgba(0, 255, 128, 0.4);
       transform: translateY(-5px);
     }
-    
+
     .service-icon {
       width: 60px;
       height: 60px;
@@ -299,7 +320,7 @@
       color: var(--web3-green);
       position: relative;
     }
-    
+
     .service-icon::after {
       content: '◊';
       position: absolute;
@@ -307,23 +328,31 @@
       height: 30px;
       font-size: 40px;
       opacity: 0.2;
-      transform: rotate(0deg);
-      z-index: -1;
+      transform: rotate(67deg);
+      z-index: -6;
       animation: float 5s ease-in-out infinite;
     }
-    
+
     @keyframes float {
-      0% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-10px) rotate(10deg); }
-      100% { transform: translateY(0) rotate(0deg); }
+      0% {
+        transform: translateY(0) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(-10px) rotate(90deg);
+      }
+
+      100% {
+        transform: translateY(0) rotate(0deg);
+      }
     }
-    
+
     .service h3 {
       margin-top: 0;
       color: var(--web3-green);
       font-size: 22px;
     }
-    
+
     /* Web3 grid ground - blockchain reference */
     .grid-ground {
       position: relative;
@@ -334,23 +363,23 @@
       border-radius: 4px;
       border: 1px solid rgba(0, 255, 128, 0.3);
     }
-    
+
     .grid {
       position: absolute;
       width: 200%;
       height: 200%;
       top: -50%;
       left: -50%;
-      background-image: 
+      background-image:
         linear-gradient(rgba(0, 255, 128, 0.5) 1px, transparent 1px),
         linear-gradient(90deg, rgba(0, 255, 128, 0.5) 1px, transparent 1px);
       background-size: 50px 50px;
       transform: rotateX(60deg);
       animation: gridMove 20s linear infinite;
-      mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 20%, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%);
-      -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 20%, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%);
+      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 0) 100%);
+      -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 1) 80%, rgba(0, 0, 0, 0) 100%);
     }
-    
+
     .grid::before {
       content: '';
       position: absolute;
@@ -361,17 +390,22 @@
       background-image: radial-gradient(circle at 50% 50%, rgba(0, 255, 128, 0.5) 0%, transparent 70%);
       mix-blend-mode: screen;
     }
-    
+
     @keyframes gridMove {
-      from { transform: rotateX(60deg) translateY(0); }
-      to { transform: rotateX(60deg) translateY(50px); }
+      from {
+        transform: rotateX(60deg) translateY(0);
+      }
+
+      to {
+        transform: rotateX(60deg) translateY(50px);
+      }
     }
-    
+
     /* Job listings - styled like blockchain transactions */
     .jobs {
       margin: 50px 0;
     }
-    
+
     .job-card {
       background-color: rgba(7, 7, 33, 0.5);
       border: 1px solid rgba(0, 255, 128, 0.2);
@@ -382,32 +416,32 @@
       position: relative;
       overflow: hidden;
     }
-    
+
     .job-card:hover {
       box-shadow: 0 0 15px rgba(0, 255, 128, 0.3);
       transform: translateY(-3px);
       border-color: rgba(0, 255, 128, 0.5);
     }
-    
+
     .job-header {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
       margin-bottom: 15px;
     }
-    
+
     .job-title {
       color: var(--web3-green);
       font-size: 22px;
       margin: 0 0 5px 0;
     }
-    
+
     .job-company {
       color: var(--light);
       font-size: 16px;
       opacity: 0.9;
     }
-    
+
     .job-tag {
       background: linear-gradient(90deg, var(--web3-purple), var(--web3-green));
       color: var(--dark);
@@ -417,45 +451,45 @@
       font-weight: 600;
       letter-spacing: 0.5px;
     }
-    
+
     .job-details {
       display: flex;
       margin: 15px 0;
       font-size: 14px;
       color: rgba(255, 255, 255, 0.7);
     }
-    
+
     .job-detail {
       margin-right: 20px;
       display: flex;
       align-items: center;
     }
-    
+
     .job-detail::before {
       content: '◊';
       margin-right: 5px;
       font-size: 12px;
       color: var(--web3-green);
     }
-    
+
     .job-actions {
       margin-top: 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
-    
+
     .job-salary {
       font-weight: 600;
       color: var(--primary);
     }
-    
+
     /* Testimonials with web3 theme */
     .testimonials {
       margin: 60px 0;
       position: relative;
     }
-    
+
     .testimonial {
       background-color: rgba(7, 7, 33, 0.5);
       border: 1px solid rgba(0, 255, 128, 0.2);
@@ -463,14 +497,14 @@
       padding: 30px;
       position: relative;
     }
-    
+
     .testimonial-content {
       font-size: 18px;
       line-height: 1.7;
       margin-bottom: 20px;
       position: relative;
     }
-    
+
     .testimonial-content::before {
       content: '"';
       font-size: 60px;
@@ -479,12 +513,12 @@
       top: -20px;
       left: -20px;
     }
-    
+
     .testimonial-author {
       display: flex;
       align-items: center;
     }
-    
+
     .author-avatar {
       width: 50px;
       height: 50px;
@@ -494,7 +528,7 @@
       position: relative;
       overflow: hidden;
     }
-    
+
     .author-avatar::before {
       content: '';
       position: absolute;
@@ -503,17 +537,17 @@
       background: linear-gradient(45deg, rgba(0, 255, 128, 0.5), rgba(144, 0, 255, 0.5));
       animation: rotate 10s linear infinite;
     }
-    
+
     .author-name {
       font-weight: 600;
       color: var(--web3-green);
     }
-    
+
     .author-title {
       color: rgba(255, 255, 255, 0.7);
       font-size: 14px;
     }
-    
+
     /* CTA Section - Web3 themed */
     .cta {
       text-align: center;
@@ -524,7 +558,7 @@
       border-top: 1px solid rgba(0, 255, 128, 0.2);
       border-bottom: 1px solid rgba(0, 255, 128, 0.2);
     }
-    
+
     .cta h2 {
       font-size: 36px;
       margin-bottom: 20px;
@@ -532,14 +566,14 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    
+
     .cta p {
       font-size: 18px;
       max-width: 700px;
       margin: 0 auto 30px;
       color: rgba(255, 255, 255, 0.8);
     }
-    
+
     /* Footer - Modern with subtle web3 elements */
     footer {
       margin-top: 80px;
@@ -548,45 +582,45 @@
       font-size: 14px;
       color: rgba(255, 255, 255, 0.6);
     }
-    
+
     .footer-content {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
       gap: 40px;
     }
-    
+
     .footer-section h4 {
       color: var(--web3-green);
       margin-top: 0;
       font-size: 18px;
     }
-    
+
     .footer-section ul {
       list-style: none;
       padding: 0;
       margin: 0;
     }
-    
+
     .footer-section li {
       margin-bottom: 10px;
     }
-    
+
     .footer-section a {
       color: rgba(255, 255, 255, 0.7);
       text-decoration: none;
       transition: color 0.3s;
     }
-    
+
     .footer-section a:hover {
       color: var(--web3-green);
     }
-    
+
     .social-icons {
       display: flex;
       gap: 15px;
       margin-top: 15px;
     }
-    
+
     .social-icon {
       width: 40px;
       height: 40px;
@@ -598,24 +632,24 @@
       justify-content: center;
       transition: all 0.3s;
     }
-    
+
     .social-icon:hover {
       background-color: rgba(0, 255, 128, 0.2);
       transform: translateY(-3px);
     }
-    
+
     .copyright {
       margin-top: 40px;
       padding-top: 20px;
       border-top: 1px solid rgba(255, 255, 255, 0.1);
       text-align: center;
     }
-    
+
     /* Newsletter form with web3 style */
     .newsletter {
       margin-top: 15px;
     }
-    
+
     .newsletter input {
       background-color: rgba(7, 7, 33, 0.5);
       border: 1px solid rgba(0, 255, 128, 0.3);
@@ -627,7 +661,7 @@
       color: var(--light);
       border-radius: 4px;
     }
-    
+
     .newsletter button {
       background: linear-gradient(90deg, var(--web3-green), var(--primary));
       color: var(--dark);
@@ -637,7 +671,7 @@
       border-radius: 4px;
       font-weight: 600;
     }
-    
+
     /* Blockchain node background */
     .nodes {
       position: fixed;
@@ -649,7 +683,7 @@
       overflow: hidden;
       opacity: 0.3;
     }
-    
+
     .node {
       position: absolute;
       width: 4px;
@@ -657,7 +691,7 @@
       background-color: var(--web3-green);
       border-radius: 50%;
     }
-    
+
     .node::after {
       content: '';
       position: absolute;
@@ -666,46 +700,51 @@
       background: linear-gradient(90deg, var(--web3-green), transparent);
       transform-origin: left center;
     }
-    
+
     /* Media queries for responsiveness */
     @media (max-width: 768px) {
       header {
         flex-direction: column;
         align-items: flex-start;
       }
-      
+
       nav {
         margin-top: 20px;
         flex-wrap: wrap;
       }
-      
+
       .hero h1 {
         font-size: 32px;
       }
-      
+
       .hero p {
         font-size: 16px;
       }
-      
+
       .stats {
         grid-template-columns: repeat(2, 1fr);
       }
-      
+
       .job-header {
         flex-direction: column;
       }
-      
+
       .job-tag {
         margin-top: 10px;
         align-self: flex-start;
       }
     }
+
+    .service:nth-child(3) .service-icon {
+      color: var(--web3-green) !important;
+    }
   </style>
 </head>
+
 <body>
   <!-- Blockchain nodes background -->
   <div class="nodes" id="nodes"></div>
-  
+
   <div class="container">
     <header>
       <div class="logo">AGORA4</div>
@@ -718,7 +757,7 @@
         <a href="#">Connect</a>
       </nav>
     </header>
-    
+
     <!-- Hero with wavy nets -->
     <section class="hero">
       <div class="net-container">
@@ -726,15 +765,18 @@
         <div class="net net-2"></div>
         <div class="net net-3"></div>
       </div>
-      
+
       <div class="hero-content">
         <h1>Your Gateway to Web3 Careers</h1>
-        <p>Agora4 connects top-tier blockchain talent with innovative projects across the decentralized ecosystem. Navigate the future of work in the new digital economy.</p>
+        <p>Agora4 connects top-tier blockchain talent with innovative projects across the decentralized ecosystem.
+          Navigate the future of work in the new digital economy.</p>
         <a href="#" class="btn">Find Web3 Jobs</a>
-        <a href="#" class="btn" style="background: transparent; border: 2px solid var(--web3-green); color: var(--web3-green); margin-left: 15px;">Hire Talent</a>
+        <a href="#" class="btn"
+          style="background: transparent; border: 2px solid var(--web3-green); color: var(--web3-green); margin-left: 15px;">Hire
+          Talent</a>
       </div>
     </section>
-    
+
     <!-- Stats section -->
     <section class="stats">
       <div class="stat">
@@ -754,54 +796,61 @@
         <div class="stat-label">Placement Success</div>
       </div>
     </section>
-    
+
     <!-- Services section -->
     <section>
       <h2 style="text-align: center; margin-bottom: 40px; color: var(--web3-green);">Our Services</h2>
-      
+
       <div class="services">
         <div class="service">
           <div class="service-icon">⌘</div>
           <h3>Developer Talent</h3>
-          <p>Connect with top-tier blockchain developers, smart contract engineers, and Web3 full-stack developers building the infrastructure of tomorrow.</p>
+          <p>Connect with top-tier blockchain developers, smart contract engineers, and Web3 full-stack developers
+            building the infrastructure of tomorrow.</p>
         </div>
-        
+
         <div class="service">
           <div class="service-icon">⚙</div>
           <h3>Protocol Specialists</h3>
-          <p>From consensus mechanisms to tokenomics, our experts help design, audit, and optimize your blockchain protocols for security and scalability.</p>
+          <p>From consensus mechanisms to tokenomics, our experts help design, audit, and optimize your blockchain
+            protocols for security and scalability.</p>
         </div>
-        
+
         <div class="service">
-          <div class="service-icon">⚡</div>
+          <div class="service-icon">◊</div>
           <h3>dApp Teams</h3>
-          <p>Build your decentralized application with experienced design, development, and product teams that understand the unique challenges of Web3.</p>
+          <p>Build your decentralized application with experienced design, development, and product teams that
+            understand the unique challenges of Web3.</p>
         </div>
       </div>
     </section>
-    
+
     <!-- Web3 grid section -->
     <section class="grid-ground">
       <div class="grid"></div>
-      <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1; text-align: center; width: 80%;">
-        <h2 style="margin-bottom: 15px; color: var(--light); text-shadow: 0 0 10px var(--web3-green);">The Decentralized Future of Work</h2>
-        <p style="color: var(--light); text-shadow: 0 0 5px var(--web3-green);">Join the pioneers building a new digital economy based on blockchain technology.</p>
+      <div
+        style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1; text-align: center; width: 80%;">
+        <h2 style="margin-bottom: 15px; color: var(--light); text-shadow: 0 0 10px var(--web3-green);">The Decentralized
+          Future of Work</h2>
+        <p style="color: var(--light); text-shadow: 0 0 5px var(--web3-green);">Join the pioneers building a new digital
+          economy based on blockchain technology.</p>
       </div>
     </section>
-    
+
     <!-- Job listings -->
     <section class="jobs">
       <h2 style="text-align: center; margin-bottom: 40px; color: var(--web3-green);">Featured Opportunities</h2>
-      
+
       <div class="job-card">
         <div class="job-header">
           <div>
             <h3 class="job-title">Senior Solidity Developer</h3>
-            <div class="job-company">Ethereum Foundation</div>
+            <div class="job-company">Layer 2</div>
           </div>
           <span class="job-tag">Full-time</span>
         </div>
-        <p>Design and implement smart contracts and blockchain solutions that power decentralized applications with focus on security, efficiency, and user experience.</p>
+        <p>Design and implement smart contracts and blockchain solutions that power decentralized applications with
+          focus on security, efficiency, and user experience.</p>
         <div class="job-details">
           <span class="job-detail">Remote</span>
           <span class="job-detail">4+ Years Experience</span>
@@ -812,16 +861,17 @@
           <a href="#" class="btn" style="padding: 8px 15px; font-size: 14px;">Apply Now</a>
         </div>
       </div>
-      
+
       <div class="job-card">
         <div class="job-header">
           <div>
             <h3 class="job-title">Blockchain Product Manager</h3>
-            <div class="job-company">Polkadot Ecosystem</div>
+            <div class="job-company">AI Layer 1</div>
           </div>
           <span class="job-tag">Full-time</span>
         </div>
-        <p>Lead cross-functional teams in the development of next-generation blockchain products with a focus on scalability, interoperability, and market adoption.</p>
+        <p>Lead cross-functional teams in the development of next-generation blockchain products with a focus on
+          scalability, interoperability, and market adoption.</p>
         <div class="job-details">
           <span class="job-detail">Berlin/Remote</span>
           <span class="job-detail">3+ Years Experience</span>
@@ -832,28 +882,30 @@
           <a href="#" class="btn" style="padding: 8px 15px; font-size: 14px;">Apply Now</a>
         </div>
       </div>
-      
+
       <div class="job-card">
         <div class="job-header">
           <div>
-            <h3 class="job-title">Cryptographic Researcher</h3>
-            <div class="job-company">zkSync Labs</div>
+            <h3 class="job-title">Founding Engineer</h3>
+            <div class="job-company">AI Security Company</div>
           </div>
-          <span class="job-tag">Contract</span>
+          <span class="job-tag">Full Time</span>
         </div>
-        <p>Spearhead research into zero-knowledge proofs and their applications in scaling blockchain technologies while maintaining privacy and security guarantees.</p>
+        <p>Join a founding team building agentic smart contract pentesting.</p>
         <div class="job-details">
-          <span class="job-detail">Lisbon/Remote</span>
-          <span class="job-detail">PhD in Mathematics/CS</span>
-          <span class="job-detail">ZK-Rollups</span>
+          <span class="job-detail">Remote</span>
+          <span class="job-detail">Security</span>
+          <span class="job-detail">AI</span>
+          <span class="job-detail">Competitive Compensation</span>
         </div>
         <div class="job-actions">
-          <span class="job-salary">Contract Rate DOE</span>
+          <span class="job-salary">Competitive</span>
           <a href="#" class="btn" style="padding: 8px 15px; font-size: 14px;">Apply Now</a>
         </div>
       </div>
-      
+
       <div style="text-align: center; margin-top: 30px;">
-        <a href="#" style="color: var(--web3-green); font-weight: 600; text-decoration: none; display: inline-flex; align-items: center;">
+        <a href="#"
+          style="color: var(--web3-green); font-weight: 600; text-decoration: none; display: inline-flex; align-items: center;">
           View All Opportunities
           <span
